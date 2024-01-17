@@ -28,19 +28,45 @@ public class ContactList {
     // Sorts contacts by person's first name, last name, or phone #
     // ?
     public void sort(int sortBy) {
-        if (sortBy == 0) {
-
-        }
-        else if (sortBy == 1) {
-
-        }
-        else if (sortBy == 2) {
-
-        }
         int n = contacts.size();
         for (int pass = 0; pass < n-1; pass++) {
-
+            for (int j = 0; j < n-1-pass; j++) {
+                if (sortBy == 0) {
+                    if (contacts.get(j).getFirstName().compareTo(contacts.get(j+1).getFirstName()) > 0) {
+                        Person temp = contacts.get(j);
+                        contacts.set(j, contacts.get(j+1));
+                        contacts.set(j+1, temp);
+                    }
+                }
+                else if (sortBy == 1) {
+                    if (contacts.get(j).getLastName().compareTo(contacts.get(j+1).getLastName()) > 0) {
+                        Person temp = contacts.get(j);
+                        contacts.set(j, contacts.get(j+1));
+                        contacts.set(j+1, temp);
+                    }
+                }
+                else if (sortBy == 2) {
+                    if (contacts.get(j).getPhoneNumber().compareTo(contacts.get(j+1).getPhoneNumber()) > 0) {
+                        Person temp = contacts.get(j);
+                        contacts.set(j, contacts.get(j+1));
+                        contacts.set(j+1, temp);
+                    }
+                }
+            }
         }
+
+    }
+
+    public Person searchByFirstName(String firstName) {
+
+    }
+
+    public Person searchByLastName(String lastName) {
+
+    }
+
+    public Person searchByPhoneNumber(String phoneNumber) {
+
     }
 
     // ?
@@ -48,6 +74,7 @@ public class ContactList {
 
     }
 
+    // need while loop here
     public void run() {
         System.out.println("1. Add Contact\n" +
                 "2. List All Contacts By First Name\n" +
