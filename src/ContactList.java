@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ContactList {
     private ArrayList<Person> contacts;
@@ -18,6 +19,84 @@ public class ContactList {
 
     // Prints out all the contacts in the list
     public String printContacts() {
+        for (int i = 0; i < contacts.size(); i++) {
+            return contacts.get(i).toString();
+        }
+        return "";
+    }
 
+    // Sorts contacts by person's first name, last name, or phone #
+    // ?
+    public void sort(int sortBy) {
+        if (sortBy == 0) {
+
+        }
+        else if (sortBy == 1) {
+
+        }
+        else if (sortBy == 2) {
+
+        }
+        int n = contacts.size();
+        for (int pass = 0; pass < n-1; pass++) {
+
+        }
+    }
+
+    // ?
+    public boolean listStudents() {
+
+    }
+
+    public void run() {
+        System.out.println("1. Add Contact\n" +
+                "2. List All Contacts By First Name\n" +
+                "3. List All Contacts By Last Name\n" +
+                "4. List All Contacts By Phone Number\n" +
+                "5. List All Students\n" +
+                "6. Search By First Name\n" +
+                "7. Search By Last Name\n" +
+                "8. Search By Phone Number\n" +
+                "0. Exit\n");
+        Scanner scan = new Scanner(System.in);
+        int num = scan.nextInt();
+        if (num == 1) {
+            System.out.println("Enter a Name: ");
+            String name = scan.nextLine();
+            contacts.addContacts(name);
+        }
+        else if (num == 2) {
+            contacts.sort(0);
+            contacts.printContacts();
+        }
+        else if (num == 3) {
+            contacts.sort(1);
+            contacts.printContacts();
+        }
+        else if (num == 4) {
+            contacts.sort(2);
+            contacts.printContacts();
+        }
+        else if (num == 5) {
+            contacts.printContacts();
+        }
+        else if (num == 6) {
+            System.out.println("Enter a First Name: ");
+            String firstName = scan.nextLine();
+            for (int i = 0; i < contacts.size(); i++) {
+                if (contacts.get(i).equals(firstName) {
+                    break;
+                }
+            }
+        }
+        else if (num == 7) {
+
+        }
+        else if (num == 8) {
+
+        }
+        else if (num == 0) {
+
+        }
     }
 }
