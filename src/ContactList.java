@@ -117,17 +117,33 @@ public class ContactList {
         while (num != 0) {
             // ????????????????????????
             if (num == 1) {
-//                System.out.println("Type in which type of Person to add:\n1. Student\n2. Parent");
+                System.out.println("Type in which type of Person to add:\n1. Student (s)\n2. Parent (p)");
+                scan.nextLine();
+                String type = scan.nextLine();
                 System.out.println("Enter a Name: ");
                 String name = scan.nextLine();
                 System.out.println("Enter a last Name: ");
                 String lastName = scan.nextLine();
                 System.out.println("Enter a phone number: #");
                 String phoneNum = scan.nextLine();
-                // Creates a new person and adds it to contacts
-                Person p = new Person(name, lastName, phoneNum);
-                contacts.add(p);
-                System.out.println("It is added to the list!");
+                // Adds grade or job depending on the type of person
+                if (type.equals("s")) {
+                    System.out.println("Enter a grade level: ");
+                    int grade = scan.nextInt();
+
+                    // Creates a new person and adds it to contacts
+                    Student s = new Student(name, lastName, phoneNum, grade);
+                    contacts.add(s);
+                }
+                // Adds grade or job depending on the type of person
+                if (type.equals("p")) {
+                    System.out.println("Enter a job: ");
+                    String job = scan.nextLine();
+                    // Creates a new person and adds it to contacts
+                    Parent p = new Parent(name, lastName, phoneNum, job);
+                    contacts.add(p);
+                }
+                System.out.println("The contact is added to the list!");
                 // Scans the next order the user puts in
                 num = scan.nextInt();
             }
@@ -157,22 +173,25 @@ public class ContactList {
             //?????????????????????
             else if (num == 6) {
                 System.out.println("Enter a First Name: ");
+                scan.nextLine();
                 String firstName = scan.nextLine();
-                System.out.println(searchByFirstName(firstName).toString());
+                System.out.println("This is your contact:" + searchByFirstName(firstName).toString());
                 // Scans the next order the user puts in
                 num = scan.nextInt();
             }
             else if (num == 7) {
                 System.out.println("Enter a Last Name: ");
+                scan.nextLine();
                 String lastName = scan.nextLine();
-                System.out.println(searchByLastName(lastName).toString());
+                System.out.println("This is your contact:" + searchByLastName(lastName).toString());
                 // Scans the next order the user puts in
                 num = scan.nextInt();
             }
             else if (num == 8) {
                 System.out.println("Enter a Phone Number: ");
+                scan.nextLine();
                 String phoneNum = scan.nextLine();
-                System.out.println(searchByPhoneNumber(phoneNum).toString());
+                System.out.println("This is your contact:" + searchByPhoneNumber(phoneNum).toString());
                 // Scans the next order the user puts in
                 num = scan.nextInt();
             }
