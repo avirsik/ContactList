@@ -1,3 +1,10 @@
+/*
+By Annie Virsik
+1/19/24
+Contact List - Using inheritance to store names and phone numbers of contacts.
+The user can add, list, and search for a specific contact.
+ */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,11 +29,13 @@ public class ContactList {
         for (int i = 0; i < contacts.size(); i++) {
             return contacts.get(i).toString();
         }
+        if (contacts.size() == 0) {
+            return "There are no contacts yet.";
+        }
         return "";
     }
 
     // Sorts contacts by person's first name, last name, or phone #
-    // ?
     public void sort(int sortBy) {
         int n = contacts.size();
         for (int pass = 0; pass < n-1; pass++) {
@@ -84,9 +93,13 @@ public class ContactList {
         return null;
     }
 
-//    public boolean listStudents() {
-//
-//    }
+    public void listStudents() {
+        for (int i = 0; i < contacts.size(); i++) {
+            if (contacts.get(i) instanceof Student) {
+                System.out.println(contacts.get(i).toString());
+            }
+        }
+    }
 
     // need while loop here
     public void run() {
@@ -101,49 +114,74 @@ public class ContactList {
                 "0. Exit\n");
         Scanner scan = new Scanner(System.in);
         int num = scan.nextInt();
-        if (num == 1) {
-            System.out.println("Enter a Name: ");
-            String name = scan.nextLine();
-            System.out.println("Enter a last Name: ");
-            String lastName = scan.nextLine();
-            System.out.println("Enter a phone number: #");
-            String phoneNum = scan.nextLine();
-            // Create a new person and add it to contacts
-            Person p = new Person(name, lastName, phoneNum);
-            contacts.add(p);
+        while (num != 0) {
+            // ????????????????????????
+            if (num == 1) {
+//                System.out.println("Type in which type of Person to add:\n1. Student\n2. Parent");
+                System.out.println("Enter a Name: ");
+                String name = scan.nextLine();
+                System.out.println("Enter a last Name: ");
+                String lastName = scan.nextLine();
+                System.out.println("Enter a phone number: #");
+                String phoneNum = scan.nextLine();
+                // Creates a new person and adds it to contacts
+                Person p = new Person(name, lastName, phoneNum);
+                contacts.add(p);
+                System.out.println("It is added to the list!");
+                // Scans the next order the user puts in
+                num = scan.nextInt();
+            }
+            else if (num == 2) {
+                sort(0);
+                System.out.println(printContacts());
+                // Scans the next order the user puts in
+                num = scan.nextInt();
+            }
+            else if (num == 3) {
+                sort(1);
+                System.out.println(printContacts());
+                // Scans the next order the user puts in
+                num = scan.nextInt();
+            }
+            else if (num == 4) {
+                sort(2);
+                System.out.println(printContacts());
+                // Scans the next order the user puts in
+                num = scan.nextInt();
+            }
+            else if (num == 5) {
+                System.out.println(printContacts());
+                // Scans the next order the user puts in
+                num = scan.nextInt();
+            }
+            //?????????????????????
+            else if (num == 6) {
+                System.out.println("Enter a First Name: ");
+                String firstName = scan.nextLine();
+                System.out.println(searchByFirstName(firstName).toString());
+                // Scans the next order the user puts in
+                num = scan.nextInt();
+            }
+            else if (num == 7) {
+                System.out.println("Enter a Last Name: ");
+                String lastName = scan.nextLine();
+                System.out.println(searchByLastName(lastName).toString());
+                // Scans the next order the user puts in
+                num = scan.nextInt();
+            }
+            else if (num == 8) {
+                System.out.println("Enter a Phone Number: ");
+                String phoneNum = scan.nextLine();
+                System.out.println(searchByPhoneNumber(phoneNum).toString());
+                // Scans the next order the user puts in
+                num = scan.nextInt();
+            }
         }
-//        else if (num == 2) {
-//            contacts.sort(0);
-//            contacts.printContacts();
-//        }
-//        else if (num == 3) {
-//            contacts.sort(1);
-//            contacts.printContacts();
-//        }
-//        else if (num == 4) {
-//            contacts.sort(2);
-//            contacts.printContacts();
-//        }
-//        else if (num == 5) {
-//            contacts.printContacts();
-//        }
-        else if (num == 6) {
-            System.out.println("Enter a First Name: ");
-            String firstName = scan.nextLine();
-            System.out.println(searchByFirstName(firstName));
-        }
-        else if (num == 7) {
-            System.out.println("Enter a Last Name: ");
-            String lastName = scan.nextLine();
-            System.out.println(searchByLastName(lastName));
-        }
-        else if (num == 8) {
-            System.out.println("Enter a Phone Number: ");
-            String phoneNum = scan.nextLine();
-            System.out.println(searchByPhoneNumber(phoneNum));
-        }
-        else if (num == 0) {
-            System.exit(0);
-        }
+        System.exit(0);
+    }
+
+    public static void main(String[] args) {
+        ContactList p = new ContactList();
+        p.run();
     }
 }
