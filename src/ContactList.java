@@ -54,25 +54,39 @@ public class ContactList {
                 }
             }
         }
-
     }
+    // Searches for first name, last name, or phone number
 
     public Person searchByFirstName(String firstName) {
-
+        for (int i = 0; i < contacts.size(); i++) {
+            if (contacts.get(i).getFirstName().equals(firstName)) {
+                return contacts.get(i);
+            }
+        }
+        return null;
     }
 
     public Person searchByLastName(String lastName) {
-
+        for (int i = 0; i < contacts.size(); i++) {
+            if (contacts.get(i).getLastName().equals(lastName)) {
+                return contacts.get(i);
+            }
+        }
+        return null;
     }
 
     public Person searchByPhoneNumber(String phoneNumber) {
-
+        for (int i = 0; i < contacts.size(); i++) {
+            if (contacts.get(i).getPhoneNumber().equals(phoneNumber)) {
+                return contacts.get(i);
+            }
+        }
+        return null;
     }
 
-    // ?
-    public boolean listStudents() {
-
-    }
+//    public boolean listStudents() {
+//
+//    }
 
     // need while loop here
     public void run() {
@@ -90,40 +104,46 @@ public class ContactList {
         if (num == 1) {
             System.out.println("Enter a Name: ");
             String name = scan.nextLine();
-            contacts.addContacts(name);
+            System.out.println("Enter a last Name: ");
+            String lastName = scan.nextLine();
+            System.out.println("Enter a phone number: #");
+            String phoneNum = scan.nextLine();
+            // Create a new person and add it to contacts
+            Person p = new Person(name, lastName, phoneNum);
+            contacts.add(p);
         }
-        else if (num == 2) {
-            contacts.sort(0);
-            contacts.printContacts();
-        }
-        else if (num == 3) {
-            contacts.sort(1);
-            contacts.printContacts();
-        }
-        else if (num == 4) {
-            contacts.sort(2);
-            contacts.printContacts();
-        }
-        else if (num == 5) {
-            contacts.printContacts();
-        }
+//        else if (num == 2) {
+//            contacts.sort(0);
+//            contacts.printContacts();
+//        }
+//        else if (num == 3) {
+//            contacts.sort(1);
+//            contacts.printContacts();
+//        }
+//        else if (num == 4) {
+//            contacts.sort(2);
+//            contacts.printContacts();
+//        }
+//        else if (num == 5) {
+//            contacts.printContacts();
+//        }
         else if (num == 6) {
             System.out.println("Enter a First Name: ");
             String firstName = scan.nextLine();
-            for (int i = 0; i < contacts.size(); i++) {
-                if (contacts.get(i).equals(firstName) {
-                    break;
-                }
-            }
+            System.out.println(searchByFirstName(firstName));
         }
         else if (num == 7) {
-
+            System.out.println("Enter a Last Name: ");
+            String lastName = scan.nextLine();
+            System.out.println(searchByLastName(lastName));
         }
         else if (num == 8) {
-
+            System.out.println("Enter a Phone Number: ");
+            String phoneNum = scan.nextLine();
+            System.out.println(searchByPhoneNumber(phoneNum));
         }
         else if (num == 0) {
-
+            System.exit(0);
         }
     }
 }
