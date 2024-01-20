@@ -15,6 +15,7 @@ public class ContactList {
         contacts = new ArrayList<Person>();
     }
 
+    // Returns ArrayList contacts
     public ArrayList<Person> getContacts() {
         return this.contacts;
     }
@@ -25,14 +26,13 @@ public class ContactList {
     }
 
     // Prints out all the contacts in the list
-    public String printContacts() {
+    public void printContacts() {
         for (int i = 0; i < contacts.size(); i++) {
-            return contacts.get(i).toString();
+            System.out.println(contacts.get(i).toString());
         }
         if (contacts.size() == 0) {
-            return "There are no contacts yet.";
+            System.out.println("There are no contacts yet.");
         }
-        return "";
     }
 
     // Sorts contacts by person's first name, last name, or phone #
@@ -64,35 +64,47 @@ public class ContactList {
             }
         }
     }
-    // Searches for first name, last name, or phone number
 
+    // Returns the contact with that first name
     public Person searchByFirstName(String firstName) {
         for (int i = 0; i < contacts.size(); i++) {
             if (contacts.get(i).getFirstName().equals(firstName)) {
                 return contacts.get(i);
             }
+            else {
+                return null;
+            }
         }
         return null;
     }
 
+    // Returns the contact with that last name
     public Person searchByLastName(String lastName) {
         for (int i = 0; i < contacts.size(); i++) {
             if (contacts.get(i).getLastName().equals(lastName)) {
                 return contacts.get(i);
             }
-        }
-        return null;
-    }
-
-    public Person searchByPhoneNumber(String phoneNumber) {
-        for (int i = 0; i < contacts.size(); i++) {
-            if (contacts.get(i).getPhoneNumber().equals(phoneNumber)) {
-                return contacts.get(i);
+            else {
+                return null;
             }
         }
         return null;
     }
 
+    // Returns the contact with that phone number
+    public Person searchByPhoneNumber(String phoneNumber) {
+        for (int i = 0; i < contacts.size(); i++) {
+            if (contacts.get(i).getPhoneNumber().equals(phoneNumber)) {
+                return contacts.get(i);
+            }
+            else {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    // Prints out all the students
     public void listStudents() {
         for (int i = 0; i < contacts.size(); i++) {
             if (contacts.get(i) instanceof Student) {
@@ -101,7 +113,7 @@ public class ContactList {
         }
     }
 
-    // need while loop here
+    // Runs the user instructions and commands
     public void run() {
         System.out.println("1. Add Contact\n" +
                 "2. List All Contacts By First Name\n" +
@@ -111,11 +123,11 @@ public class ContactList {
                 "6. Search By First Name\n" +
                 "7. Search By Last Name\n" +
                 "8. Search By Phone Number\n" +
-                "0. Exit\n");
+                "0. Exit\n\n" +
+                "What would you like to do?");
         Scanner scan = new Scanner(System.in);
         int num = scan.nextInt();
         while (num != 0) {
-            // ????????????????????????
             if (num == 1) {
                 System.out.println("Type in which type of Person to add:\n1. Student (s)\n2. Parent (p)");
                 scan.nextLine();
@@ -130,7 +142,6 @@ public class ContactList {
                 if (type.equals("s")) {
                     System.out.println("Enter a grade level: ");
                     int grade = scan.nextInt();
-
                     // Creates a new person and adds it to contacts
                     Student s = new Student(name, lastName, phoneNum, grade);
                     contacts.add(s);
@@ -144,55 +155,78 @@ public class ContactList {
                     contacts.add(p);
                 }
                 System.out.println("The contact is added to the list!");
+                System.out.println("\nWhat would you like to do?");
                 // Scans the next order the user puts in
                 num = scan.nextInt();
             }
             else if (num == 2) {
                 sort(0);
-                System.out.println(printContacts());
+                printContacts();
                 // Scans the next order the user puts in
+                System.out.println("\nWhat would you like to do?");
                 num = scan.nextInt();
             }
             else if (num == 3) {
                 sort(1);
-                System.out.println(printContacts());
+                printContacts();
                 // Scans the next order the user puts in
+                System.out.println("\nWhat would you like to do?");
                 num = scan.nextInt();
             }
             else if (num == 4) {
                 sort(2);
-                System.out.println(printContacts());
+                printContacts();
                 // Scans the next order the user puts in
+                System.out.println("\nWhat would you like to do?");
                 num = scan.nextInt();
             }
             else if (num == 5) {
-                System.out.println(printContacts());
+                printContacts();
                 // Scans the next order the user puts in
+                System.out.println("\nWhat would you like to do?");
                 num = scan.nextInt();
             }
-            //?????????????????????
+            // 6, 7, AND 8 AREN'T WORKING FOR THE SECOND AND FOLLOWING CONTACTS???
             else if (num == 6) {
                 System.out.println("Enter a First Name: ");
                 scan.nextLine();
                 String firstName = scan.nextLine();
-                System.out.println("This is your contact:" + searchByFirstName(firstName).toString());
+                if (searchByFirstName(firstName) == null) {
+                    System.out.println(firstName + " is not in the list.");
+                }
+                else {
+                    System.out.println("This is your contact: " + searchByFirstName(firstName).toString());
+                }
                 // Scans the next order the user puts in
+                System.out.println("\nWhat would you like to do?");
                 num = scan.nextInt();
             }
             else if (num == 7) {
                 System.out.println("Enter a Last Name: ");
                 scan.nextLine();
                 String lastName = scan.nextLine();
-                System.out.println("This is your contact:" + searchByLastName(lastName).toString());
+                if (searchByLastName(lastName) == null) {
+                    System.out.println(lastName + " is not in the list.");
+                }
+                else {
+                    System.out.println("This is your contact: " + searchByLastName(lastName).toString());
+                }
                 // Scans the next order the user puts in
+                System.out.println("\nWhat would you like to do?");
                 num = scan.nextInt();
             }
             else if (num == 8) {
                 System.out.println("Enter a Phone Number: ");
                 scan.nextLine();
                 String phoneNum = scan.nextLine();
-                System.out.println("This is your contact:" + searchByPhoneNumber(phoneNum).toString());
+                if (searchByPhoneNumber(phoneNum) == null) {
+                    System.out.println(phoneNum + " is not in the list.");
+                }
+                else {
+                    System.out.println("This is your contact: " + searchByPhoneNumber(phoneNum).toString());
+                }
                 // Scans the next order the user puts in
+                System.out.println("\nWhat would you like to do?");
                 num = scan.nextInt();
             }
         }
@@ -200,7 +234,7 @@ public class ContactList {
     }
 
     public static void main(String[] args) {
-        ContactList p = new ContactList();
-        p.run();
+        ContactList c = new ContactList();
+        c.run();
     }
 }
