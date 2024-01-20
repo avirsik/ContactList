@@ -186,7 +186,6 @@ public class ContactList {
                 System.out.println("\nWhat would you like to do?");
                 num = scan.nextInt();
             }
-            // 6, 7, AND 8 AREN'T WORKING FOR THE SECOND AND FOLLOWING CONTACTS???
             else if (num == 6) {
                 System.out.println("Enter a First Name: ");
                 scan.nextLine();
