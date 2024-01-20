@@ -16,6 +16,6 @@ public class Parent extends Person {
     }
 
     public String toString() {
-        return super.toString() + " " + this.job;
+        return super.toString() + " Job: " + this.job;
     }
 }

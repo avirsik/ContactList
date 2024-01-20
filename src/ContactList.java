@@ -71,7 +71,7 @@ public class ContactList {
             if (contacts.get(i).getFirstName().equals(firstName)) {
                 return contacts.get(i);
             }
-            else {
+            else if (contacts.isEmpty()) {
                 return null;
             }
         }
@@ -84,7 +84,7 @@ public class ContactList {
             if (contacts.get(i).getLastName().equals(lastName)) {
                 return contacts.get(i);
             }
-            else {
+            else if (contacts.isEmpty()) {
                 return null;
             }
         }
@@ -97,7 +97,7 @@ public class ContactList {
             if (contacts.get(i).getPhoneNumber().equals(phoneNumber)) {
                 return contacts.get(i);
             }
-            else {
+            else if (contacts.isEmpty()) {
                 return null;
             }
         }
